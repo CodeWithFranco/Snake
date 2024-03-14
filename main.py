@@ -1,3 +1,10 @@
+"""
+Title: Snake Game
+Author: Franco Nepomuceno
+Date: 13 March 2024
+"""
+
+
 import turtle
 from turtle import Screen, Turtle
 
