@@ -5,8 +5,10 @@ Title: Snake
 """
 import time
 from snake import Snake
-from turtle import Screen, Turtle
+from turtle import Screen
 from food import Food
+from scoreboard import Scoreboard
+import time
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -16,6 +18,7 @@ screen.tracer(0)  # updates screen animation to 0: OFF (Fast)
 
 snake = Snake()
 food = Food()
+scoreboard = Scoreboard()
 
 
 # Key Binding
@@ -32,8 +35,15 @@ while game_is_on:
     snake.move()
 
     # Detecting food with snake
-    if snake.head.distance(food) < 15:
-        print("Gotcha")
+    if snake.head.distance(food) < 15:  # food is 10 x 10 pixels
+        scoreboard.increase_score()
+        scoreboard.update_score()
+        food.refresh()
+
+    # Detect collision with wall
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        scoreboard.game_end()  # Writes Game Over after hitting the wall
+        game_is_on = False
 
 
 

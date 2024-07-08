@@ -1,7 +1,7 @@
 from turtle import Turtle
 
 starting_position = [(0, 0), (-20, 0), (-40, 0)]  # [0, 1, 2] Three pixels on the x-axis
-move_distance = 20
+move_distance = 20  # 20 pixels
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -12,7 +12,7 @@ class Snake:
     def __init__(self):
         self.segments = []  # attribute for an empty list. Always remember to use "self" when working within a class
         self.create_snake()  # method from function below
-        self.head = self.segments[0]  # This line is the head of the snake
+        self.head = self.segments[0]  # Creates the head of the snake at [0, 0]
 
     def create_snake(self):  # self is implied denoting that it is part of the initialization
         for position in starting_position:
