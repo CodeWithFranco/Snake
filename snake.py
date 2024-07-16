@@ -16,11 +16,18 @@ class Snake:
 
     def create_snake(self):  # self is implied denoting that it is part of the initialization
         for position in starting_position:
-            new_segment = Turtle("square")
-            new_segment.color("white")
-            new_segment.penup()
-            new_segment.goto(position)
-            self.segments.append(new_segment)  # Refer to our attribute segment
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        new_segment = Turtle("square")
+        new_segment.color("white")
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)  # Refer to our attribute segment: [1, 2, 3] --> 3
+
+    def extent(self):
+        # add a new segment to the snake
+        self.add_segment(self.segments[-1].position())  # start counting from the end of the list
 
     def move(self):
         """
