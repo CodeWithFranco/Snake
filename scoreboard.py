@@ -8,8 +8,10 @@ class Scoreboard(Turtle):
         Below statements are attributes
         """
         self.score = 0
-        with open(r"\Users\franc\OneDrive\Desktop\data.txt") as data:
-            self.high_score = int(data.read())
+        self.high_score = 0
+        with open("data.txt") as data:
+            contents = data.read()
+            self.high_score = int(contents) if contents.strip().isdigit() else 0
         self.color("white")
         self.penup()
         self.goto(x=0, y=270)
@@ -23,9 +25,10 @@ class Scoreboard(Turtle):
     def reset(self):
         if self.score > self.high_score:
             self.high_score = self.score
-            with open(r"..\Users\franc\OneDrive\Desktop\data.txt", mode="w") as data:
+            with open("data.txt", mode="w") as data:
                 data.write(f"{self.high_score}")
            
+
         self.score = 0
         self.update_score()
 
